@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import DashBoard from '../pages/DashBoard.vue'
+import TaskManager from '../pages/TaskManager.vue'
 import ConsoleBoard from "../pages/ConsoleBoard.vue"
 import UserSettings from '../pages/UserSettings.vue'
 import SystemCmdSettings from '../pages/UserSettings/SystemCmdSettings.vue'
@@ -16,6 +17,11 @@ export default new VueRouter({
             path: '/console-board',
             name: 'console-board',
             component: ConsoleBoard,
+        },
+        {
+            path: '/task-manager',
+            name: 'task-manager',
+            component: TaskManager,
         },
         {
             path: '/user-settings',

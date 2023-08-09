@@ -41,6 +41,7 @@ export default {
             let result = {};
             result.name = this.SettingInputBoxInfo.name;
             result.value = val;
+            console.log("LocalValue", result);
             this.$emit("SettingInput", result);
         },
         Value(val) {

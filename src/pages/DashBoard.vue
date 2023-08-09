@@ -119,7 +119,7 @@ export default {
         },
         getMonitorData() {
             const vm = this;
-            axios.get('http://10.5.73.1:8000/perf-all')
+            axios.get('http://192.168.31.221:8000/perf-all')
                 .then(function (response) {
                     if (response.data.success == false)
                         return;

@@ -99,7 +99,7 @@
 
 <script>
 export default {
-    name: 'PerfMonitor',
+    name: "PerfMonitor",
     data() {
         return {
             cpu: {
@@ -118,7 +118,7 @@ export default {
                 wakeLock: false,
                 dozeMode: false
             }
-        }
+        };
     },
     props: {
         PerfMonitorData: {
@@ -144,7 +144,7 @@ export default {
             immediate: false
         }
     }
-}
+};
 </script>
 
 <style scoped>

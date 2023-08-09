@@ -79,7 +79,7 @@ export default {
             this.SettingsData[val.name] = val.value;
         },
         refreshSettings() {
-            axios.post('http://10.5.73.1:8000/get-settings-cmd')
+            axios.post('http://192.168.31.221:8000/get-settings-cmd')
                 .then(response => {
                     if (response.data.success) 
                         this.SettingsData = response.data.data;
@@ -89,7 +89,7 @@ export default {
                 });
         },
         saveSettings() {
-            axios.post('http://10.5.73.1:8000/save-settings-cmd', this.SettingsData)
+            axios.post('http://192.168.31.221:8000/save-settings-cmd', this.SettingsData)
                 .then(response => {
                     if (response.data.success)
                         console.log("保存成功");

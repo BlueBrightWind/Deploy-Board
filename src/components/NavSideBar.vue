@@ -20,6 +20,14 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link text-black" active-class="bg-purple text-white" :to="{name: 'task-manager'}">
+                            <div class="text-black text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="material-icons opacity-9">call_to_action</i>
+                            </div>
+                            <span class="nav-link-text ms-1">任务管理器</span>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link text-black" active-class="bg-purple text-white" :to="{name: 'console-board'}">
                             <div class="text-black text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="material-icons opacity-9">videogame_asset</i>
@@ -44,38 +52,38 @@
 
 <script>
 export default {
-    name: 'NavSideBar',
+    name: "NavSideBar",
     data() {
         return {
             //
-        }
+        };
     },
     methods: {
         //
     }
-}
+};
 </script>
 <style scoped>
-.navbar-vertical .navbar-nav .nav-link{
-    color:black;
+.navbar-vertical .navbar-nav .nav-link {
+    color: black;
     transition-duration: 0ms;
 }
-.g-sidenav-show .sidenav .nav-link-text{
+.g-sidenav-show .sidenav .nav-link-text {
     transition-duration: 0ms;
 }
-.navbar-vertical.navbar-expand-xs .navbar-nav .nav-link{
+.navbar-vertical.navbar-expand-xs .navbar-nav .nav-link {
     margin-left: 5px;
     margin-right: 5px;
 }
-.navbar-shadow{
+.navbar-shadow {
     box-shadow: 3px 0 10px -5px rgba(0, 0, 0, 0.5) !important;
 }
-.bg-purple{
+.bg-purple {
     background-color: rgb(94, 114, 228) !important;
 }
-.nav-title{
+.nav-title {
     font-size: 20px;
-    font-family: 'Times New Roman', sans-serif;
+    font-family: "Times New Roman", sans-serif;
     color: rgb(94, 114, 228);
 }
 </style>
