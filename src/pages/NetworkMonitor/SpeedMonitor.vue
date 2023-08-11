@@ -3,65 +3,46 @@
 </template>
 
 <script>
-// import axios from 'axios'
-import NavBar from "../components/NavBar.vue";
 import * as echarts from "echarts";
 
 // 注册组件
 export default {
-    name: "NetworkMonitor",
-    components: {
-        NavBar
-    },
     data() {
         return {
-            // 必须项，设置导航栏标题
-            Title: {
-                tinyTitle: "流量",
-                fullTitle: "流量监控"
-            },
             chart: null,
-            chartOptions: { xSplitNumber: 10 },
-            // NetworkSpeed: [
-            //     { upload: 1, download: 740, time: 1691743043000 },
-            //     { upload: 10, download: 784, time: 1691743044000 },
-            //     { upload: 104, download: 960, time: 1691743045000 },
-            //     { upload: 54, download: 1022, time: 1691743046000 },
-            //     { upload: 650, download: 1125, time: 1691743047000 },
-            //     { upload: 758, download: 6125, time: 1691743077000 }
-            // ]
+            chartOptions: { xSplitNumber: 10 }
         };
     },
     props: {
-        NetworkSpeed: {
+        NetworkSpeedList: {
             required: true
         }
     },
     computed: {
         dateMin() {
-            if (this.NetworkSpeed.length) return this.NetworkSpeed[0].time;
+            if (this.NetworkSpeedList.length) return this.NetworkSpeedList[0].time;
             else return null;
         },
         dateMax() {
-            if (this.NetworkSpeed.length)
-                return this.NetworkSpeed[0].time + 1000 * 60;
+            if (this.NetworkSpeedList.length)
+                return this.NetworkSpeedList[0].time + 1000 * 60;
             else return null;
         },
         AxisData() {
             let AxisData = [];
             let temp = [];
-            for (let i = 0; i < this.NetworkSpeed.length; i++) {
+            for (let i = 0; i < this.NetworkSpeedList.length; i++) {
                 temp.push([
-                    this.NetworkSpeed[i].time,
-                    this.NetworkSpeed[i].upload
+                    this.NetworkSpeedList[i].time,
+                    this.NetworkSpeedList[i].upload
                 ]);
             }
             AxisData.push(temp);
             temp = [];
-            for (let i = 0; i < this.NetworkSpeed.length; i++) {
+            for (let i = 0; i < this.NetworkSpeedList.length; i++) {
                 temp.push([
-                    this.NetworkSpeed[i].time,
-                    this.NetworkSpeed[i].download
+                    this.NetworkSpeedList[i].time,
+                    this.NetworkSpeedList[i].download
                 ]);
             }
             AxisData.push(temp);
@@ -130,12 +111,22 @@ export default {
                     borderWidth: 0,
                     formatter: function (params) {
                         let tip = "";
+                        let units = ["KB/s", "MB/s", "GB/s"];
                         for (let i = 0; i < params.length; i++) {
+                            let unitIndex = 0;
+                            let value = params[i].data[1];
+                             while (
+                                value >= 1024 &&
+                                unitIndex < units.length - 1
+                            ) {
+                                value /= 1000;
+                                unitIndex++;
+                            }
                             tip +=
                                 params[i].seriesName +
                                 " : " +
-                                params[i].data[1] +
-                                "KB/s" +
+                                value.toFixed(2) + " " + 
+                                units[unitIndex] +
                                 "<br/>";
                         }
                         return tip;
@@ -147,28 +138,27 @@ export default {
                         color: "rgb(0,0,0)",
                         show: true,
                         /* 切换行坐标为 yy-mm-dd hh:mm:ss */
-                        /*
-                        formatter: function (value) {
-                            let date = new Date(value);
-                            let year = date.getFullYear();
-                            let month = date.getMonth() + 1;
-                            let day = date.getDate();
-                            let hour = date.getHours();
-                            let minute = date.getMinutes();
-                            let second = date.getSeconds();
-                            let dateResult = [year, month, day]
-                                .map(function (item) {
-                                    return item < 10 ? "0" + item : item;
-                                })
-                                .join("-");
-                            let timeResult = [hour, minute, second]
-                                .map(function (item) {
-                                    return item < 10 ? "0" + item : item;
-                                })
-                                .join(":");
-                            return dateResult + "\n" + timeResult;
-                        }
-                        */
+                        // formatter: function (value) {
+                        //     let date = new Date(value);
+                        //     let year = date.getFullYear();
+                        //     let month = date.getMonth() + 1;
+                        //     let day = date.getDate();
+                        //     let hour = date.getHours();
+                        //     let minute = date.getMinutes();
+                        //     let second = date.getSeconds();
+                        //     let dateResult = [year, month, day]
+                        //         .map(function (item) {
+                        //             return item < 10 ? "0" + item : item;
+                        //         })
+                        //         .join("-");
+                        //     let timeResult = [hour, minute, second]
+                        //         .map(function (item) {
+                        //             return item < 10 ? "0" + item : item;
+                        //         })
+                        //         .join(":");
+                        //     return dateResult + "\n" + timeResult;
+                        // }
+            
                         /* 切换行坐标为 hh:mm:ss */
                         formatter: function (value) {
                             let date = new Date(value);
@@ -197,6 +187,7 @@ export default {
                     type: "value",
                     min: 0,
                     splitNumber: 5,
+                    minInterval: 1,
                     axisLabel: {
                         formatter: function (value) {
                             // 根据数值大小自动调整单位
@@ -253,10 +244,9 @@ export default {
         }).observe(document.getElementById("NetworkChart"));
     },
     watch: {
-        NetworkSpeed: {
+        NetworkSpeedList: {
             handler: function () {
                 let chartOptions = this.chart.getOption();
-                console.log(chartOptions);
                 chartOptions.series = this.series;
                 chartOptions.xAxis[0].min = this.dateMin;
                 chartOptions.xAxis[0].max = this.dateMax;
