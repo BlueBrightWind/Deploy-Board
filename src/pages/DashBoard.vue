@@ -6,8 +6,8 @@
         <!-- 主页面内容 -->
         <div class="container-fluid py-4">
             <!-- 性能监控 -->
-            <PerfMonitor :PerfMonitorData="PerfMonitorData"></PerfMonitor>
-            <div class="row mt-4">
+            <PerfMonitor :PerfMonitorData="PerfMonitorData" class="mb-4"></PerfMonitor>
+            <div class="row">
                 <!-- CPU使用率 -->
                 <CpuChart :CpuChartData="PerfMonitorChart.CpuChartData"></CpuChart>
                 <!-- 内存使用率 -->

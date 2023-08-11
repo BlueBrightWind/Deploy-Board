@@ -98,7 +98,7 @@ import NavBar from "../components/NavBar.vue";
 
 // 注册组件
 export default {
-    name: "ConsoleBoard",
+    name: "TaskManager",
     components: {
         NavBar
     },

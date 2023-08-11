@@ -1,6 +1,6 @@
 <template>
     <div class="row user-select-none">
-        <div class="col-xl-3 col-sm-6 mb-4">
+        <div class="col-xl-3 col-sm-6">
             <div class="card">
                 <div class="card-header p-3">
                     <div class="icon icon-lg icon-shape bg-gradient-secondary shadow-dark text-center border-radius-xl position-absolute">
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-4">
+        <div class="col-xl-3 col-sm-6">
             <div class="card">
                 <div class="card-header p-3">
                     <div class="icon icon-lg icon-shape bg-gradient-warning shadow-primary text-center border-radius-xl position-absolute">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-4">
+        <div class="col-xl-3 col-sm-6">
             <div class="card">
                 <div class="card-header p-3">
                     <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl position-absolute">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-4">
+        <div class="col-xl-3 col-sm-6">
             <div class="card">
                 <div class="card-header p-3">
                     <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl position-absolute">

@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import DashBoard from '../pages/DashBoard.vue'
+import NetworkMonitor from '../pages/NetworkMonitor.vue'
 import TaskManager from '../pages/TaskManager.vue'
 import ConsoleBoard from "../pages/ConsoleBoard.vue"
 import UserSettings from '../pages/UserSettings.vue'
@@ -17,6 +18,11 @@ export default new VueRouter({
             path: '/console-board',
             name: 'console-board',
             component: ConsoleBoard,
+        },
+        {
+            path: '/network-monitor',
+            name: 'network-monitor',
+            component: NetworkMonitor,
         },
         {
             path: '/task-manager',

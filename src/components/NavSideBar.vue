@@ -20,6 +20,14 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link text-black" active-class="bg-purple text-white" :to="{name: 'network-monitor'}">
+                            <div class="text-black text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="material-icons opacity-9">network_cell</i>
+                            </div>
+                            <span class="nav-link-text ms-1">流量监控</span>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link text-black" active-class="bg-purple text-white" :to="{name: 'task-manager'}">
                             <div class="text-black text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="material-icons opacity-9">call_to_action</i>
