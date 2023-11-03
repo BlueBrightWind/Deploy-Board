@@ -79,8 +79,18 @@ export default {
 </script>
 
 <style scoped>
-    .terminal{
-        width: 100%;
-        height: 100%;
-    }
+.terminal {
+    width: 100%;
+    height: 100%;
+}
+.terminal ::-webkit-scrollbar {
+    width: 6px;
+}
+.terminal ::-webkit-scrollbar-thumb{
+    background-color: rgb(150,150,150);
+    border-radius: 6px;
+}
+.terminal ::-webkit-scrollbar-track{
+    background-color: white;
+}
 </style>
