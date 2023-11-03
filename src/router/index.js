@@ -6,6 +6,7 @@ import ConsoleBoard from "../pages/ConsoleBoard.vue"
 import UserSettings from '../pages/UserSettings.vue'
 import SystemCmdSettings from '../pages/UserSettings/SystemCmdSettings.vue'
 import PathSettings from '../pages/UserSettings/PathSettings.vue'
+import WebTerminal from '../pages/WebTerminal.vue'
 
 export default new VueRouter({
     routes: [
@@ -28,6 +29,11 @@ export default new VueRouter({
             path: '/task-manager',
             name: 'task-manager',
             component: TaskManager,
+        },
+        {
+            path: '/web-terminal',
+            name: 'web-terminal',
+            component: WebTerminal,
         },
         {
             path: '/user-settings',

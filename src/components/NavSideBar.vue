@@ -36,6 +36,14 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link text-black" active-class="bg-purple text-white" :to="{name: 'web-terminal'}">
+                            <div class="text-black text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="material-icons opacity-9">indeterminate_check_box</i>
+                            </div>
+                            <span class="nav-link-text ms-1">终端</span>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link text-black" active-class="bg-purple text-white" :to="{name: 'console-board'}">
                             <div class="text-black text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="material-icons opacity-9">videogame_asset</i>

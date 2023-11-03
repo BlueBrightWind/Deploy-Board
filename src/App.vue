@@ -4,7 +4,10 @@
         <NavSideBar></NavSideBar>
         <!-- 侧边栏结束 -->
         <!-- 主页面 -->
-        <router-view @ToggleNavSideBar="toggleNavSideBar"></router-view>
+        <keep-alive include="WebTerminal">
+            <router-view @ToggleNavSideBar="toggleNavSideBar"></router-view>
+        </keep-alive>
+
         <!-- 主页面结束 -->
         <!-- 遮挡层 -->
         <div class="sidenav-mask" :class="NavSideBarShow?'':'sidenav-mask-hide'" @click="toggleNavSideBar"></div>
