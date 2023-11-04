@@ -15,9 +15,15 @@ import { CanvasAddon } from "xterm-addon-canvas";
 
 export default {
     name: "WebTerminal",
+    props: {
+        id: {
+            type: Number,
+            required: true
+        }
+    },
     data() {
         return {
-            ip: "127.0.0.1",
+            ip: "10.5.234.127",
             port: 3000,
             terminal: null,
             fitAddon: null,
@@ -51,6 +57,7 @@ export default {
                     let processId = res.data;
                     console.log("get processId:", processId);
                     this.pid = processId;
+                    this.$emit("UpdateTerminalPid", this.id, this.pid);
                     this.socketURL = `ws://${this.ip}:${this.port}/terminals/${this.pid}`;
                     console.log("open webSocket URL:", this.socketURL);
                     this.socket = new WebSocket(this.socketURL);
@@ -73,8 +80,7 @@ export default {
         this.initSocket();
         let resizeTimeout = null;
         new ResizeObserver(() => {
-            if(resizeTimeout)
-                clearTimeout(resizeTimeout);
+            if (resizeTimeout) clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
                 this.fitAddon.fit();
                 this.resizeTerminal();
@@ -83,7 +89,7 @@ export default {
     },
     beforeDestroy() {
         this.socket.close();
-        this.terminal.dispose();
+        // this.terminal.dispose();
     }
 };
 </script>
