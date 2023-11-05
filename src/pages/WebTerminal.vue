@@ -67,6 +67,10 @@ export default {
         delTerminal(index) {
             this.Terminals.splice(index, 1);
             if (this.ActiveTerminal >= index) this.ActiveTerminal--;
+            if (this.ActiveTerminal < 0 && this.Terminals.length > 0) {
+                this.ActiveTerminal = 0;
+                this.updateTerminalStyle(0);
+            }
         },
         activateTerminal(index) {
             this.ActiveTerminal = index;
@@ -78,11 +82,8 @@ export default {
                     return;
                 }
             });
-        }
-    },
-    watch: {
-        ActiveTerminal(val) {
-            if (val < 0) return;
+        },
+        updateTerminalStyle(val) {
             this.Terminals.forEach((terminal, index) => {
                 terminal.style["right-split"] = false;
                 if (index === val) terminal.style.active = true;
@@ -94,6 +95,12 @@ export default {
                 )
                     terminal.style["right-split"] = true;
             });
+        }
+    },
+    watch: {
+        ActiveTerminal(val) {
+            if (val < 0) return;
+            this.updateTerminalStyle(val);
         }
     },
     mounted() {
@@ -219,7 +226,7 @@ export default {
     height: calc(100% - 40px);
     position: relative;
 }
-.terminals .boards .blank{
+.terminals .boards .blank {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -227,6 +234,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 .terminals .terminal-board {
     height: 100%;
@@ -237,7 +245,6 @@ export default {
 .terminals .terminal-board.active {
     z-index: 2 !important;
 }
-
 </style>
 
 <style scoped>
