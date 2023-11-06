@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="list-group">
-            <SettingInputBox v-for="(item, index) in Settings" :key="index" @SettingInput="settingInput" :SettingInputBoxInfo="item" :Value="typeof SettingsData[item.name] !== 'undefined' ? SettingsData[item.name] : ''">
+            <SettingInputBox v-for="(item, index) in Settings" :key="index" @SettingInput="settingInput" :SettingInputBoxInfo="item" :Value="SettingsData[item.name]">
             </SettingInputBox>
         </ul>
         <div class="footer">
@@ -68,10 +68,9 @@ export default {
                     title: "关闭安卓系统指令",
                     tips: "关闭 安卓系统 的linux shell命令",
                     name: "AndroidSystemCloseCmd"
-                },
+                }
             ],
-            SettingsData: {
-            }
+            SettingsData : {}
         };
     },
     methods: {
@@ -81,7 +80,7 @@ export default {
         refreshSettings() {
             axios.post('http://192.168.31.221:8000/get-settings-cmd')
                 .then(response => {
-                    if (response.data.success) 
+                    if (response.data.success)
                         this.SettingsData = response.data.data;
                 })
                 .catch(error => {
@@ -98,6 +97,10 @@ export default {
                     console.log(error);
                 });
         }
+    },
+    created() {
+        for(let i=0 ; i<this.Settings.length ; i++)
+            this.$set(this.SettingsData, this.Settings[i].name, "");
     },
     mounted() {
         this.refreshSettings();

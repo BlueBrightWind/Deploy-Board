@@ -47,7 +47,4 @@ export default {
 
 
 <style scoped>
-    .bg-purple{
-        background-color: rgb(94, 114, 228) !important;
-    }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="list-group">
-            <SettingInputBox v-for="(item, index) in Settings" :key="index" @SettingInput="settingInput" :SettingInputBoxInfo="item" :Value="typeof SettingsData[item.name] !== 'undefined' ? SettingsData[item.name] : ''">
+            <SettingInputBox v-for="(item, index) in Settings" :key="index" @SettingInput="settingInput" :SettingInputBoxInfo="item" :Value="SettingsData[item.name]">
             </SettingInputBox>
         </ul>
         <div class="footer">
@@ -22,7 +22,7 @@ import axios from 'axios';
 import SettingInputBox from './utils/SettingInputBox.vue';
 
 export default {
-    name: "SystemCmdSettings",
+    name: "PathSettings",
     components: {
         SettingInputBox
     },
@@ -55,8 +55,7 @@ export default {
                     name: "CpuTemperaturePath"
                 },
             ],
-            SettingsData: {
-            }
+            SettingsData: {}
         };
     },
     methods: {
@@ -83,6 +82,10 @@ export default {
                     console.log(error);
                 });
         }
+    },
+    created() {
+        for (let i = 0; i < this.Settings.length; i++)
+            this.$set(this.SettingsData, this.Settings[i].name, "");
     },
     mounted() {
         this.refreshSettings();
