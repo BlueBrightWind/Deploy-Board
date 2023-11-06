@@ -4,10 +4,10 @@
             <!-- 当前页面指示 -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm">
-                        <span class="opacity-5 text-dark" href="javascript:;">当前页面</span>
+                    <li class="breadcrumb-item">
+                        <span class="opacity-8 subtitle" href="javascript:;">当前页面</span>
                     </li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
+                    <li class="breadcrumb-item title" aria-current="page">
                         {{Title}}
                     </li>
                 </ol>
@@ -47,4 +47,13 @@ export default {
 
 
 <style scoped>
+.title{
+    color: rgb(60, 60, 60);
+    font-size: 17px;
+    font-weight: bold;
+}
+.subtitle{
+    color: rgb(50, 50, 50);
+    font-size: 17px;
+}
 </style>

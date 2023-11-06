@@ -5,7 +5,7 @@
         <!-- 导航栏结束 -->
         <!-- 主页面内容 -->
         <div class="container-fluid mx-auto">
-            <div class="col-10 mx-auto bg-white border-radius-sm box-shadow-console pt-1 mt-4">
+            <div class="col-12 col-xl-11 mx-auto bg-white border-radius-lg box-shadow-console pb-1 mt-4 box-shadow-settings">
                 <ul class="list-group">
                     <ConsoleCheckBox v-for="(item, index) in Settings" :key="index" @ConsoleCheck="consoleCheck" :ConsoleCheckBoxInfo="item" :Value="typeof SettingsData[item.name] !== 'undefined' ? SettingsData[item.name] : false"></ConsoleCheckBox>
                 </ul>

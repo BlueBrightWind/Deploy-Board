@@ -5,7 +5,7 @@
         <!-- 导航栏结束 -->
         <!-- 主页面内容 -->
         <div class="container-fluid mx-auto">
-            <div class="col-12 col-xl-10 mx-auto bg-white border-radius-sm box-shadow-console pt-1 mt-4 box-shadow-settings">
+            <div class="col-12 col-xl-11 mx-auto bg-white border-radius-lg box-shadow-console pt-1 mt-4 box-shadow-settings">
                 <div class="card-body px-0">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0 width-100">

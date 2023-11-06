@@ -5,7 +5,7 @@
         <!-- 导航栏结束 -->
         <!-- 主页面内容 -->
         <div class="container-fluid mx-auto">
-            <div class="col-12 col-xl-10 mx-auto bg-white border-radius-sm box-shadow-console pb-1 mt-4 box-shadow-settings">
+            <div class="col-12 col-xl-11 mx-auto bg-white border-radius-lg pb-1 mt-4 box-shadow-settings">
                 <div class="terminals">
                     <div class="titles">
                         <div class="add-terminal"><span class="material-icons add-btn" @click="addTerminal">add</span></div>
@@ -113,7 +113,7 @@ export default {
     padding-left: 7px;
     padding-right: 7px;
     width: 100%;
-    height: 80vh;
+    height: calc(90vh - 50px);
 }
 
 .terminals .titles {
@@ -142,7 +142,7 @@ export default {
 }
 
 .terminals .titles .terminal-title {
-    color: rgb(25, 25, 25);
+    color: rgb(60, 60, 60);
     max-width: 200px;
     min-width: 150px;
     height: 100%;
@@ -160,7 +160,7 @@ export default {
 }
 .terminals .titles .terminal-title.active {
     background-color: rgb(235, 235, 235);
-    color: rgb(80, 182, 255);
+    color: rgb(40, 170, 255);
     box-shadow: 0 0 3px rgb(200, 200, 200);
     border-radius: 4px 4px 0 0;
 }
@@ -171,8 +171,8 @@ export default {
     right: 0;
     transform: translate(0, -50%);
     height: 20px;
-    width: 1px; /* 线的宽度 */
-    background-color: rgb(150, 150, 150); /* 线的颜色 */
+    width: 1px;
+    background-color: rgb(200, 200, 200);
 }
 
 .terminals .titles .terminal-title .title-name {

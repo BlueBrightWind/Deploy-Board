@@ -5,7 +5,7 @@
         <!-- 导航栏结束 -->
         <!-- 主页面内容 -->
         <div class="container-fluid mx-auto">
-            <div class="col-12 col-xl-10 mx-auto bg-white pt-1 mt-4 border-radius-sm box-shadow-settings">
+            <div class="col-12 col-xl-11 mx-auto bg-white pt-1 mt-4 border-radius-lg box-shadow-settings">
                 <div class="user-settings-tabs">
                     <router-link class="tab" active-class="tab-active" :to="{name: 'system-cmd-settings'}">
                         <span>指令设置</span>
