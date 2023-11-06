@@ -63,7 +63,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    transition-duration: 0.25s;
+    transition-duration: 0.1s;
 }
 .tab:hover {
     color: rgb(149, 188, 250);
@@ -74,8 +74,8 @@ export default {
     margin-bottom: 5px;
 }
 .tab-active {
-    color: rgba(100, 149, 237, 1) !important;
-    border-bottom: 2px solid rgba(100, 149, 237, 1);
+    color: rgba(70, 150, 255, 1) !important;
+    border-bottom: 2px solid rgba(70, 150, 255, 1);
 }
 
 .box-shadow-settings {

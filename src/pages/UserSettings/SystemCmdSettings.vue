@@ -124,7 +124,7 @@ export default {
     margin-right: 50px;
     margin-top: 20px;
     cursor: pointer;
-    transition-duration: 0.25s;
+    transition-duration: 0.1s;
     user-select: none;
 }
 .refresh:hover {
@@ -160,7 +160,7 @@ export default {
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
     cursor: pointer;
-    transition-duration: 0.25s;
+    transition-duration: 0.1s;
     user-select: none;
 }
 .save:hover {
