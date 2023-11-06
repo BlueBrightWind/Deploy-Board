@@ -6,7 +6,7 @@
         <!-- 主页面内容 -->
         <div class="container-fluid py-4">
             <!-- 性能监控 -->
-            <PerfMonitor :PerfMonitorData="PerfMonitorData" class="mb-4"></PerfMonitor>
+            <PerfMonitor :PerfMonitorData="PerfMonitorData" class="mb-4 perfMonitor"></PerfMonitor>
             <div class="row">
                 <!-- CPU使用率 -->
                 <CpuChart :CpuChartData="PerfMonitorChart.CpuChartData"></CpuChart>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 import NavBar from "../components/NavBar.vue";
 import PerfMonitor from "./DashBoard/PerfMonitor.vue";
 import CpuChart from "./DashBoard/CpuChart.vue";
@@ -66,7 +66,7 @@ export default {
             },
             // 定时器
             Timer: null
-        }
+        };
     },
     methods: {
         // 必须项，切换侧边栏
@@ -98,39 +98,91 @@ export default {
 
             if (this.PerfMonitorChart.CpuChartData.CpuLoadList.length == 0) {
                 for (let i = 0; i < cpuLoadList.length; i++)
-                    this.PerfMonitorChart.CpuChartData.CpuLoadList.push([cpuLoadList[i]]);
-            }
-            else {
-                if (this.PerfMonitorChart.CpuChartData.CpuLoadList[0].length > 40)
+                    this.PerfMonitorChart.CpuChartData.CpuLoadList.push([
+                        cpuLoadList[i]
+                    ]);
+            } else {
+                if (
+                    this.PerfMonitorChart.CpuChartData.CpuLoadList[0].length >
+                    40
+                )
                     for (let i = 0; i < cpuLoadList.length; i++)
-                        this.PerfMonitorChart.CpuChartData.CpuLoadList[i].shift();
+                        this.PerfMonitorChart.CpuChartData.CpuLoadList[
+                            i
+                        ].shift();
                 for (let i = 0; i < cpuLoadList.length; i++)
-                    this.PerfMonitorChart.CpuChartData.CpuLoadList[i].push(cpuLoadList[i]);
+                    this.PerfMonitorChart.CpuChartData.CpuLoadList[i].push(
+                        cpuLoadList[i]
+                    );
             }
 
             if (this.PerfMonitorChart.MemoryChartData.MemoryUsed.length > 40)
                 this.PerfMonitorChart.MemoryChartData.MemoryUsed.shift();
             this.PerfMonitorChart.MemoryChartData.MemoryUsed.push(memoryUsed);
             this.PerfMonitorChart.MemoryChartData.MemoryTotal = memoryTotal;
-
         },
         getMonitorData() {
             const vm = this;
-            axios.get('http://192.168.31.221:8000/perf-all')
+            axios
+                .get("http://192.168.31.221:8000/perf-all")
                 .then(function (response) {
-                    if (response.data.success == false)
-                        return;
+                    if (response.data.success == false) return;
                     let data = response.data.data;
-                    
-                    let cpuLoadAvg = Object.prototype.hasOwnProperty.call(data.cpu, "cpuLoadAvg") ? data.cpu.cpuLoadAvg : 0;
-                    let cpuLoadList = Object.prototype.hasOwnProperty.call(data.cpu, "cpuLoadList") ? data.cpu.cpuLoadList : [];
-                    let cpuTemp = Object.prototype.hasOwnProperty.call(data.cpu, "cpuTemp") ? data.cpu.cpuTemp : 0;
-                    let memoryUsed = Object.prototype.hasOwnProperty.call(data.memory, "memoryUsed") ? data.memory.memoryUsed : 0;
-                    let memoryTotal = Object.prototype.hasOwnProperty.call(data.memory, "memoryTotal") ? data.memory.memoryTotal : 1;
-                    let batteryLevel = Object.prototype.hasOwnProperty.call(data.battery, "batteryLevel") ? data.battery.batteryLevel : 0;
-                    let batteryCharging = Object.prototype.hasOwnProperty.call(data.battery, "batteryCharging") ? data.battery.batteryCharging : false;
-                    let wakeLock = Object.prototype.hasOwnProperty.call(data.phone, "wakeLock") ? data.phone.wakeLock : false;
-                    let dozeMode = Object.prototype.hasOwnProperty.call(data.phone, "dozeMode") ? data.phone.dozeMode : false;
+
+                    let cpuLoadAvg = Object.prototype.hasOwnProperty.call(
+                        data.cpu,
+                        "cpuLoadAvg"
+                    )
+                        ? data.cpu.cpuLoadAvg
+                        : 0;
+                    let cpuLoadList = Object.prototype.hasOwnProperty.call(
+                        data.cpu,
+                        "cpuLoadList"
+                    )
+                        ? data.cpu.cpuLoadList
+                        : [];
+                    let cpuTemp = Object.prototype.hasOwnProperty.call(
+                        data.cpu,
+                        "cpuTemp"
+                    )
+                        ? data.cpu.cpuTemp
+                        : 0;
+                    let memoryUsed = Object.prototype.hasOwnProperty.call(
+                        data.memory,
+                        "memoryUsed"
+                    )
+                        ? data.memory.memoryUsed
+                        : 0;
+                    let memoryTotal = Object.prototype.hasOwnProperty.call(
+                        data.memory,
+                        "memoryTotal"
+                    )
+                        ? data.memory.memoryTotal
+                        : 1;
+                    let batteryLevel = Object.prototype.hasOwnProperty.call(
+                        data.battery,
+                        "batteryLevel"
+                    )
+                        ? data.battery.batteryLevel
+                        : 0;
+                    let batteryCharging = Object.prototype.hasOwnProperty.call(
+                        data.battery,
+                        "batteryCharging"
+                    )
+                        ? data.battery.batteryCharging
+                        : false;
+                    let wakeLock = Object.prototype.hasOwnProperty.call(
+                        data.phone,
+                        "wakeLock"
+                    )
+                        ? data.phone.wakeLock
+                        : false;
+                    let dozeMode = Object.prototype.hasOwnProperty.call(
+                        data.phone,
+                        "dozeMode"
+                    )
+                        ? data.phone.dozeMode
+                        : false;
 
                     vm.PerfMonitorData.cpu.load = cpuLoadAvg;
                     vm.PerfMonitorData.cpu.temp = cpuTemp;
@@ -141,25 +193,44 @@ export default {
                     vm.PerfMonitorData.phone.wakeLock = wakeLock;
                     vm.PerfMonitorData.phone.dozeMode = dozeMode;
 
-                    if (vm.PerfMonitorChart.CpuChartData.CpuLoadList.length == 0) {
+                    if (
+                        vm.PerfMonitorChart.CpuChartData.CpuLoadList.length == 0
+                    ) {
                         for (let i = 0; i < cpuLoadList.length; i++)
-                            vm.PerfMonitorChart.CpuChartData.CpuLoadList.push([cpuLoadList[i]]);
-                    }
-                    else {
-                        if (vm.PerfMonitorChart.CpuChartData.CpuLoadList[0].length > 40)
+                            vm.PerfMonitorChart.CpuChartData.CpuLoadList.push([
+                                cpuLoadList[i]
+                            ]);
+                    } else {
+                        if (
+                            vm.PerfMonitorChart.CpuChartData.CpuLoadList[0]
+                                .length > 40
+                        )
                             for (let i = 0; i < cpuLoadList.length; i++)
-                                vm.PerfMonitorChart.CpuChartData.CpuLoadList[i].shift();
+                                vm.PerfMonitorChart.CpuChartData.CpuLoadList[
+                                    i
+                                ].shift();
                         for (let i = 0; i < cpuLoadList.length; i++)
-                            vm.PerfMonitorChart.CpuChartData.CpuLoadList[i].push(cpuLoadList[i]);
+                            vm.PerfMonitorChart.CpuChartData.CpuLoadList[
+                                i
+                            ].push(cpuLoadList[i]);
                     }
 
-                    if (vm.PerfMonitorChart.MemoryChartData.MemoryUsed.length > 40)
+                    if (
+                        vm.PerfMonitorChart.MemoryChartData.MemoryUsed.length >
+                        40
+                    )
                         vm.PerfMonitorChart.MemoryChartData.MemoryUsed.shift();
-                    vm.PerfMonitorChart.MemoryChartData.MemoryUsed.push(memoryUsed);
-                    vm.PerfMonitorChart.MemoryChartData.MemoryTotal = memoryTotal;
+                    vm.PerfMonitorChart.MemoryChartData.MemoryUsed.push(
+                        memoryUsed
+                    );
+                    vm.PerfMonitorChart.MemoryChartData.MemoryTotal =
+                        memoryTotal;
                 })
                 .catch(function (error) {
-                    console.warn("Error: an error occurred while getting monitor data.", error);
+                    console.warn(
+                        "Error: an error occurred while getting monitor data.",
+                        error
+                    );
                 });
         }
     },
@@ -176,4 +247,11 @@ export default {
 </script>
 
 <style scoped>
+.perfMonitor {
+    padding-left: 25px;
+    padding-right: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-gap: 20px 0; /* 子元素之间的间距 */
+}
 </style>
