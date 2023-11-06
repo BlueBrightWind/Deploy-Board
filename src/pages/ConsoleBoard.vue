@@ -29,10 +29,7 @@ export default {
     data() {
         return {
             // 必须项，设置导航栏标题
-            Title: {
-                tinyTitle: "控制台",
-                fullTitle: "状态控制台"
-            },
+            Title: "控制台",
             Settings: [
                 {
                     title: "唤醒锁定",

@@ -8,10 +8,10 @@
                         <span class="opacity-5 text-dark" href="javascript:;">当前页面</span>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        {{Title.tinyTitle}}
+                        {{Title}}
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">{{Title.fullTitle}}</h6>
+                <!-- <h6 class="font-weight-bolder mb-0">{{Title.fullTitle}}</h6> -->
             </nav>
             <!-- 当前页面指示结束 -->
             <!-- 侧边栏开关 -->

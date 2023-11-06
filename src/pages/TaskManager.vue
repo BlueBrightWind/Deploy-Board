@@ -105,10 +105,7 @@ export default {
     data() {
         return {
             // 必须项，设置导航栏标题
-            Title: {
-                tinyTitle: "进程管理",
-                fullTitle: "进程任务管理"
-            },
+            Title: "进程管理",
             TaskList: [],
             TaskSortState: {
                 type: "PID",

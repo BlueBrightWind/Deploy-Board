@@ -36,10 +36,7 @@ export default {
     data() {
         return {
             // 必须项，设置导航栏标题
-            Title: {
-                tinyTitle: "面板",
-                fullTitle: "性能监测面板"
-            },
+            Title: "面板",
             PerfMonitorData: {
                 cpu: {
                     load: 0,

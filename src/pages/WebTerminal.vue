@@ -38,10 +38,7 @@ export default {
     data() {
         return {
             // 必须项，设置导航栏标题
-            Title: {
-                tinyTitle: "终端",
-                fullTitle: "Web终端"
-            },
+            Title: "终端",
             ActiveTerminal: -1,
             NewTerminalNum: 0,
             Terminals: []

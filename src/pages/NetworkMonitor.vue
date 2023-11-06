@@ -28,10 +28,7 @@ export default {
     data() {
         return {
             // 必须项，设置导航栏标题
-            Title: {
-                tinyTitle: "流量",
-                fullTitle: "流量监控"
-            },
+            Title: "流量监控",
             NetworkSpeed: [],
             Timer: null
         };

@@ -33,10 +33,7 @@ export default {
     data() {
         return {
             // 必须项，设置导航栏标题
-            Title: {
-                tinyTitle: "设置",
-                fullTitle: "用户设置"
-            }
+            Title: "设置"
         };
     },
     methods: {
@@ -46,30 +43,6 @@ export default {
         },
 
     },
-    // 修改子标题使用
-    beforeRouteEnter(to, from, next) {
-        next(vm => {
-            switch (to.name) {
-                case "system-cmd-settings":
-                    vm.Title.fullTitle = "指令设置";
-                    break;
-                case "path-settings":
-                    vm.Title.fullTitle = "路径设置";
-                    break;
-            }
-        });
-    },
-    beforeRouteUpdate(to, from, next) {
-        switch (to.name) {
-            case "system-cmd-settings":
-                this.Title.fullTitle = "指令设置";
-                break;
-            case "path-settings":
-                this.Title.fullTitle = "路径设置";
-                break;
-        }
-        next();
-    }
 };
 </script>
 
